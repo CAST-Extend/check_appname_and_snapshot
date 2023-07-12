@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["-restURL", "http://localhost:8081", "-user","admin", "-password", "admin", "-application", "test_recipeportal_4", "-console_cli", "C:\\com.castsoftware.aip.console.tools.1.29.0-funcrel\\aip-console-tools-cli.jar", "-console_key", "PRU0hJ6Y.nkWXnuxe95HZlb85mubviG1pzujJOoUJ", "-css_port", "2284", "-source_code_loc", "C:\\code\\Deliver\\SHP-Test-Project\\SHP-TestApp1\\recipeportal.zip"],
+        }
+    ]
+}
