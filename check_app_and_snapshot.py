@@ -1,11 +1,8 @@
 import json
 from requests.auth import HTTPBasicAuth
 import requests
-from cast_common.aipRestCall import AipRestCall
 from cast_common.util import run_process
 from argparse import ArgumentParser
-from os.path import abspath
-from subprocess import Popen,PIPE,STDOUT
 
 def create_app(args):
     print('Creating new application.....\n')
@@ -25,6 +22,34 @@ def add_new_version_and_take_snapshot(args):
         print(f'Unable to add a new version and analyze its source code application {args.application} -> {e}')
         return e.errno
 
+def check_snapshot(args, guid):
+    method = "get"
+    url=f"{args.restURL}/rest/{guid}/applications/3/snapshots"
+    auth = HTTPBasicAuth('admin', 'admin')
+
+    try:
+        #fetching the Application list and details.
+        rsp = requests.request(method, url, auth=auth)
+        # print(rsp.status_code)
+        if rsp.status_code == 200:
+            apps = json.loads(rsp.text) 
+
+            if len(apps)  <= 0:
+                print(f'No snapshots found for the Application -> {args.application}.\n')
+                add_new_version_and_take_snapshot(args)
+                exit(-1)
+            else:
+                print(f"snapshots found for the Application -> {args.application}.\n")
+
+        else:
+            print("Some error has occured! ")
+            print(rsp.text)
+
+    except Exception as e:
+        print('some exception has occured! \n Please resolve them or contact developers')
+        print(e)
+
+
 if __name__ == "__main__":
 
     parser = ArgumentParser()
@@ -39,10 +64,10 @@ if __name__ == "__main__":
     parser.add_argument('-source_code_loc','--source_code_loc',required=True,help='Source Code Location')
 
     args=parser.parse_args()
-    aip = AipRestCall(args.restURL, args.user, args.password)
+    # aip = AipRestCall(args.restURL, args.user, args.password)
 
     method = "get"
-    url=f"http://localhost:8081/api/applications/"
+    url=f"{args.restURL}/api/applications/"
     auth = HTTPBasicAuth('admin', 'admin')
 
     try:
@@ -61,13 +86,7 @@ if __name__ == "__main__":
                 add_new_version_and_take_snapshot(args)
             else:
                 print(f"{args.application} is already present in the AIP console.\n")
-                snapshot = aip.get_latest_snapshot(app_dict[args.application])
-                if not bool(snapshot):
-                    print(f'No snapshots found for the Application -> {args.application}.\n')
-                    add_new_version_and_take_snapshot(args)
-                    exit(-1)
-                else:
-                    print(f"snapshots found for the Application -> {args.application}.\n")
+                check_snapshot(args, app_dict[args.application])
 
         else:
             print("Some error has occured! ")
