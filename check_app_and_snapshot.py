@@ -67,7 +67,7 @@ if __name__ == "__main__":
     # aip = AipRestCall(args.restURL, args.user, args.password)
 
     method = "get"
-    url=f"{args.restURL}/api/applications?type=onboarded"
+    url=f"{args.restURL}/api/applications"
     auth = HTTPBasicAuth('admin', 'admin')
 
     try:
