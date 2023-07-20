@@ -24,7 +24,7 @@ def add_new_version_and_take_snapshot(args):
 
 def check_snapshot(args, guid):
     method = "get"
-    url=f"{args.restURL}/rest/{guid}/applications/3/snapshots"
+    url=f"{args.restURL}/api/applications/{guid}/snapshots"
     auth = HTTPBasicAuth(f'{args.user}', f'{args.password}')
 
     try:
