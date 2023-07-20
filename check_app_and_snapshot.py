@@ -25,7 +25,7 @@ def add_new_version_and_take_snapshot(args):
 def check_snapshot(args, guid):
     method = "get"
     url=f"{args.restURL}/rest/{guid}/applications/3/snapshots"
-    auth = HTTPBasicAuth('apikey', f'{args.console_key}')
+    auth = HTTPBasicAuth(f'{args.user}', f'{args.password}')
 
     try:
         #fetching the Application list and details.
@@ -54,6 +54,8 @@ if __name__ == "__main__":
 
     parser = ArgumentParser()
     parser.add_argument('-restURL','--restURL',required=True,help='CAST REST API URL')
+    parser.add_argument('-user','--user',required=True,help='CAST REST API User Name')
+    parser.add_argument('-password','--password',required=True,help='CAST REST API Password')
     parser.add_argument('-application','--application',required=True,help='Application Name')
 
     parser.add_argument('-console_cli','--console_cli',required=True,help='Console CLI')
@@ -66,7 +68,7 @@ if __name__ == "__main__":
 
     method = "get"
     url=f"{args.restURL}/api/applications"
-    auth = HTTPBasicAuth('apikey', f'{args.console_key}')
+    auth = HTTPBasicAuth(f'{args.user}', f'{args.password}')
 
     try:
         #fetching the Application list and details.
