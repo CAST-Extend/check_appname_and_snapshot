@@ -54,8 +54,6 @@ if __name__ == "__main__":
 
     parser = ArgumentParser()
     parser.add_argument('-restURL','--restURL',required=True,help='CAST REST API URL')
-    parser.add_argument('-user','--user',required=True,help='CAST REST API User Name')
-    parser.add_argument('-password','--password',required=True,help='CAST REST API Password')
     parser.add_argument('-application','--application',required=True,help='Application Name')
 
     parser.add_argument('-console_cli','--console_cli',required=True,help='Console CLI')
