@@ -25,7 +25,7 @@ def add_new_version_and_take_snapshot(args):
 def check_snapshot(args, guid):
     method = "get"
     url=f"{args.restURL}/rest/{guid}/applications/3/snapshots"
-    auth = HTTPBasicAuth('admin', 'admin')
+    auth = HTTPBasicAuth('apikey', f'{args.console_key}')
 
     try:
         #fetching the Application list and details.
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
     method = "get"
     url=f"{args.restURL}/api/applications"
-    auth = HTTPBasicAuth('admin', 'admin')
+    auth = HTTPBasicAuth('apikey', f'{args.console_key}')
 
     try:
         #fetching the Application list and details.
