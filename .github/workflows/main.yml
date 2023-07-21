@@ -17,6 +17,6 @@ jobs:
         - name: Azure Pipelines Action
           uses: Azure/pipelines@v1
           with:
-            azure-devops-project-url: https://dev.azure.com/organization/project-name
-            azure-pipeline-name: 'My Pipeline'
+            azure-devops-project-url: https://dev.azure.com/CASTNAPSAzureTest/ShiftLeftAutomation
+            azure-pipeline-name: 'check_appname_and_snapshot'
             azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
