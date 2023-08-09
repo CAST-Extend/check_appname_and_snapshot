@@ -1,1 +1,1 @@
-# check_appname_and_snapshot
+# check_appname
