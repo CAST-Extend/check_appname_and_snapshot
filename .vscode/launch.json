@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["-restURL", "http://localhost:8081", "-user","admin", "-password", "admin", "-application", "test_recipeportal_14"],
+            "args": ["-restURL", "http://localhost:8081", "-api_key", "2x8kCcbI.aFopVxqot0fqTajOe0ihupN4fabpjl90", "-application", "test_recipeportal"],
         }
     ]
 }
