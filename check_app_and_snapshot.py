@@ -19,8 +19,10 @@ def check_appname(restURL, api_key, application):
                 app_dict[app["name"]] = app["guid"]
 
             if application not in app_dict.keys():
+                print("application not present in AIP Console !")
                 return 1
             else:
+                print("application already present in AIP Console.")
                 return 0
 
         else:
