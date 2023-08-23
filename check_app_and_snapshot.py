@@ -20,10 +20,10 @@ def check_appname(restURL, api_key, application):
 
             if application not in app_dict.keys():
                 print("application not present in AIP Console !")
-                return 1
+                return False
             else:
                 print("application already present in AIP Console.")
-                return 0
+                return True
 
         else:
             print("Some error has occured! ")
@@ -42,4 +42,10 @@ if __name__ == "__main__":
 
     args=parser.parse_args()
     result = check_appname(args.restURL, args.api_key, args.application)
+    # set name of the variable
+    name = 'status'
+    # set value of the variable
+    value = result
+    # set variable
+    print(f'##vso[task.setvariable variable={name};]{value}')
     print(result)
